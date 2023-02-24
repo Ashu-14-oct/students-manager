@@ -8,6 +8,7 @@ const commentController = require('../controllers/comment_controller');
 router.get('/sign-in', userController.signUp);
 router.get('/sign-up', userController.signIn);
 router.get('/sign-out', userController.signOut);
+router.get('/studentForm', passport.checkAuthentication, userController.studentForm);
 router.post('/post', passport.checkAuthentication ,postController.createPost);
 router.get('/post/delete/:id', passport.checkAuthentication,postController.delete);
 router.post('/create-comment', passport.checkAuthentication, commentController.create);

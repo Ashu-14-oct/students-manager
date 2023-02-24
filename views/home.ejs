@@ -35,15 +35,16 @@
         
     </section>
     <% } else {%>
+        <a href="/user/studentForm"><button type="button" class="btn btn-outline-primary">Create new student</button></a>
     <div>
-        <% if(locals.user) {%>
-        <form action="/user/post" id="new-post-form" method="post">
-            <textarea name="content" cols="30" rows="3" placeholder="Type here..."></textarea>
-            <input value="post" type="submit" >
-        </form>
-        <% } %>
+        <!-- <% if(locals.user) {%>
+            <form action="/user/post" id="new-post-form" method="post">
+                <textarea name="content" cols="30" rows="3" placeholder="Type here..."></textarea>
+                <input value="post" type="submit" >
+            </form>
+            <% } %> -->
     </div>
-    <div id="post-list-container">
+    <!-- <div id="post-list-container">
         <ul>
             <% for(let i of posts) {%>
             
@@ -95,17 +96,16 @@
             
             <% } %>
         </ul>
-    </div>
+    </div> -->
 
-    <section>
+    <!-- <section>
         <h4>Friends</h4>
         <% for(u of all_users) {%>
             <p>
                 <a href="/user/profile/<%= u.id %>"><%= u.name %></a>
             </p>
         <% } %>
-    </section>
+    </section> -->
     <% } %>
     
 </body>
-<script src="/js/home_posts.js"></script>

@@ -66,6 +66,11 @@ module.exports.createUser = function(req, res){
 
     
 }
+module.exports.studentForm = function(req, res){
+    return res.render('student_form', {
+        title: 'student form',
+    });
+}
 
 module.exports.createSession = function(req, res){
     return res.redirect('/');
