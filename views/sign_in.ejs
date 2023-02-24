@@ -1,18 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-</head>
+<link rel="stylesheet" href="/css/sign_in.css">
 <body>
     <div>
         <form action="/create-session" method="post">
-            <input name="email" required placeholder="Enter your email address">
-            <input name="passwor" required placeholder="Enter your password">
+            <input type="email" name="email" required placeholder="Enter your email address">
+            <input type="password" name="password" required placeholder="Enter your password">
             <button type="submit">Log in</button>
         </form>
     </div>
 </body>
-</html>

@@ -1,12 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-</head>
+
 <body>
-    <h1>Its working</h1>
+    
+    <% if( !locals.user ) {%>
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-md-9 col-lg-6 col-xl-5">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                        class="img-fluid" alt="Sample image">
+                </div>
+                <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+                    <form action="/create-session" method="post">
+                        <div class="form-outline mb-4">
+                            <input type="email" name="email" id="form3Example3"
+                                class="form-control form-control-lg"
+                                placeholder="Enter a valid email address" />
+                            <label class="form-label" for="form3Example3">Email address</label>
+                        </div>
+
+                        <div class="form-outline mb-3">
+                            <input type="password" name="password" id="form3Example4"
+                                class="form-control form-control-lg" placeholder="Enter password" />
+                            <label class="form-label" for="form3Example4">Password</label>
+                        </div>
+                        <div class="mb-0 w-50 p-2">
+                            <button type="submit" class="btn btn-primary ">Sign In</button>
+                            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a
+                                    href="/user/sign-up" class="link-danger">Register</a></p>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    <% } else {%>
+    <div>
+        <% if(locals.user) {%>
+        <form action="/user/post" id="new-post-form" method="post">
+            <textarea name="content" cols="30" rows="3" placeholder="Type here..."></textarea>
+            <input value="post" type="submit" >
+        </form>
+        <% } %>
+    </div>
+    <div id="post-list-container">
+        <ul>
+            <% for(let i of posts) {%>
+            
+                <li id="post-<%= i._id %>">
+                    <p>
+                        <% if(locals.user && locals.user.id == i.user.id) {%>
+                        <small>
+                            <a class="delete-post-button" href="/user/post/delete/<%= i._id %>">x</a>
+                        </small>
+                        <% } %>
+                        <%= i.content  %>
+                        <br>
+                        <small>
+                             -By <%= i.user.name %>
+                        </small>
+                    </p>
+                    <div>
+                        <% if(locals.user) {%>
+                        
+                            <form action="/user/create-comment" method="post">
+                                <input type="text" name="content" placeholder="Type a comment..">
+                                <input type="hidden" name="post" value="<%= i._id %>">
+                                <input type="submit" value="Add comment">
+                            </form>
+
+                        <% } %>
+
+                        <div>
+                            <ul>
+                                <% for(comment of i.comments) {%>
+                                    <p>
+                                        <% if(locals.user && locals.user.id == comment.user.id) {%>
+                                            <small>
+                                                <a href="/user/delete-comment/<%= comment.id %>">x</a>
+                                            </small>
+                                        <% } %>
+                                        <%= comment.content %>
+                                            <br>
+                                            <small>
+                                                <%= comment.user.name %>
+                                            </small>
+                                    </p>
+                                <% } %>    
+                            </ul>
+                        </div>
+
+                    </div>
+                </li>   
+            
+            <% } %>
+        </ul>
+    </div>
+
+    <section>
+        <h4>Friends</h4>
+        <% for(u of all_users) {%>
+            <p>
+                <a href="/user/profile/<%= u.id %>"><%= u.name %></a>
+            </p>
+        <% } %>
+    </section>
+    <% } %>
+    
 </body>
-</html>
+<script src="/js/home_posts.js"></script>
