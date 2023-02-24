@@ -39,19 +39,36 @@
 
 
     <div>
-        
+        <i><p>STUDENTS:</p></i>
             <ol style="list-style-type: none;">
                 <% for(let i of students) {%>
                     <li>
-                            <i><h2 style="color: #db4c4cd9;"><%= i.name  %></h2></i>
+                            <a href="/user/demo" style="text-decoration:none"><i><h2 style="color: #db4c4cd9;"><%= i.name  %></h2></i></a>
                     </li>   
                 <% } %>
             </ol>
     </div>
 
-    <div>
+    <div class="m-4">
         <% if(locals.user) {%>
             <a href="/user/studentForm"><button type="button" class="btn btn-outline-primary">Create new student</button></a>
+        <% } %>
+    </div>
+
+    <div>
+        <i><p>INTERVIEWS:</p></i>
+        <ol style="list-style-type: none;">
+            <% for(let i of interviews) {%>
+                <li>
+                        <a style="text-decoration:none" href="/user/demo"><i><h2 style="color: #db4c4cd9;"><%= i.company  %></h2></i></a>
+                </li>   
+            <% } %>
+        </ol>
+    </div>
+
+    <div class="m-4">
+        <% if(locals.user) {%>
+            <a href="/user/interviewForm"><button type="button" class="btn btn-outline-primary">Make an interview</button></a>
         <% } %>
     </div>
 

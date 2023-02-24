@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Student = require('../models/student');
+const Interview = require('../models/interviews');
 module.exports.profile = function(req, res){
     User.findById(req.params.id, function(err, user){
         return res.render('user_profile',{
@@ -71,6 +72,11 @@ module.exports.studentForm = function(req, res){
         title: 'student form',
     });
 }
+module.exports.interviewForm = function(req, res){
+    return res.render('interview', {
+        title: 'Make an interview',
+    })
+}
 module.exports.createStudent = function(req, res){
     Student.create(req.body, function(err, done){
         if(err){
@@ -78,6 +84,16 @@ module.exports.createStudent = function(req, res){
             return;
         }
         console.log('created the student!');
+        return res.redirect('/');
+    });
+}
+module.exports.createInterview = function(req, res){
+    Interview.create(req.body, function(err, done){
+        if(err){
+            console.log('could not create the student', err);
+            return;
+        }
+        console.log('created the interview!');
         return res.redirect('/');
     });
 }
