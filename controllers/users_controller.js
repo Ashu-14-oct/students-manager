@@ -1,6 +1,11 @@
 const User = require('../models/user');
 const Student = require('../models/student');
 const Interview = require('../models/interviews');
+const csvtojson = require('csvtojson');
+const { Parser } = require('json2csv');
+const fs = require('fs');
+
+
 module.exports.profile = function(req, res){
     User.findById(req.params.id, function(err, user){
         return res.render('user_profile',{
@@ -33,6 +38,31 @@ module.exports.signOut = function(req, res){
         res.redirect('/');
       });
     // return res.redirect('/');
+}
+module.exports.download = async function(req, res){
+    try{
+        //fetch data from database
+        const data = await Student.find().lean();
+        //convert data from json to csv format using json2csv library
+
+        const fields = ['name', 'batch', 'status', 'dsaScore', 'webScore', 'reactScore', 'interviewCompany', 'interviewDate', 'result'];
+        const json2csvParser = new Parser({ fields });
+        const csvData = json2csvParser.parse(data);
+
+        //save CSV data to a file
+        const filename = 'data.csv';
+        fs.writeFileSync(filename, csvData);
+
+        //set HTTP responses header to download the file
+        res.setHeader('Content-Disposition', `attachment; filename=${filename}`);
+        res.setHeader('Content-Type', 'text/csv');
+        res.download(filename);
+
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).send('Internal server error');
+      }
 }
 module.exports.createUser = function(req, res){
     if(req.body.confirm_password != req.body.password){
