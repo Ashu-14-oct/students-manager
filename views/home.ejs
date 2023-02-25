@@ -43,7 +43,7 @@
             <ol style="list-style-type: none;">
                 <% for(let i of students) {%>
                     <li>
-                            <a href="/user/demo" style="text-decoration:none"><i><h2 style="color: #db4c4cd9;"><%= i.name  %></h2></i></a>
+                            <a href="/user/student-profile/<%= i.id %>" style="text-decoration:none"><i><h2 style="color: #db4c4cd9;"><%= i.name  %></h2></i></a>
                     </li>   
                 <% } %>
             </ol>
@@ -60,7 +60,7 @@
         <ol style="list-style-type: none;">
             <% for(let i of interviews) {%>
                 <li>
-                        <a style="text-decoration:none" href="/user/demo"><i><h2 style="color: #db4c4cd9;"><%= i.company  %></h2></i></a>
+                        <a style="text-decoration:none" href="/user/create-interview/<%= i.id %>"><i><h2 style="color: #db4c4cd9;"><%= i.company  %></h2></i></a>
                 </li>   
             <% } %>
         </ol>
@@ -71,15 +71,15 @@
             <a href="/user/interviewForm"><button type="button" class="btn btn-outline-primary">Make an interview</button></a>
         <% } %>
     </div>
-
-    <!-- <section>
+<!-- 
+    <section>
         <h4>Friends</h4>
         <% for(u of all_users) {%>
             <p>
                 <a href="/user/profile/<%= u.id %>"><%= u.name %></a>
             </p>
         <% } %>
-    </section> -->
+</section> -->
     <% } %>
     
 </body>

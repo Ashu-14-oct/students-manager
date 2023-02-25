@@ -87,6 +87,22 @@ module.exports.createStudent = function(req, res){
         return res.redirect('/');
     });
 }
+module.exports.studentProfile = async function(req, res){
+    let student = await Student.findById(req.params.id);
+    return res.render('student_profile',{
+        title: 'student',
+        students: student,
+    });
+}
+
+module.exports.interviewProfile = async function(req, res){
+    let interview = await Interview.findById(req.params.id);
+    return res.render('interview_profile',{
+        title: 'interviews',
+        interviews: interview,
+    })
+}
+
 module.exports.createInterview = function(req, res){
     Interview.create(req.body, function(err, done){
         if(err){
