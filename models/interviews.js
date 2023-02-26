@@ -8,10 +8,10 @@ const interviewSchema = new mongoose.Schema({
         type: Date,
         required: true,
     },
-    students: [{
+    assignedStudent: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Student',
-    }]
+    }],
 });
 
 const Interview = mongoose.model('Interview', interviewSchema);
