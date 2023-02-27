@@ -1,0 +1,107 @@
+<body>
+
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">New student</h3>
+                            <form action="/user/create-student" method="post">
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+
+                                        <div class="form-outline">
+                                            <input type="text" id="firstName" name="name" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="firstName">First Name</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+
+                                        <div class="form-outline">
+                                            <input type="text" id="lastName" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="lastName">Last Name(optional)</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                                        <div class="form-outline datepicker w-100">
+                                            <input type="text" name="batch" class="form-control form-control-lg" id="birthdayDate" required/>
+                                            <label for="birthdayDate" class="form-label">Batch</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+
+                                        <input type="text" name="dsaScore" class="form-control form-control-lg" id="dsa" required/>
+                                        <label for="dsa" class="form-label">DSA Score</label>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+
+                                        <div class="form-outline">
+                                            <input type="text" name="status" id="status"
+                                                class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="status">Status(placed or not)</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+
+                                        <div class="form-outline">
+                                            <input name="webScore" type="text" id="web" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="web">WEB Score</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <input name="reactScore" type="text" id="react" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="react">REACT Score</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <input name="interviewCompany" type="text" id="interviewCompany" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="interviewCompany">Interview company name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <input name="interviewDate" type="date" id="InDate" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="InDate">Interview Date</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <input name="result" type="text" id="res" class="form-control form-control-lg" required/>
+                                            <label class="form-label" for="res">Result</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 pt-2">
+                                    <input class="btn btn-primary btn-lg" type="submit" value="Submit" required/>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>

@@ -1,0 +1,27 @@
+<body>
+    <section class="vh-100" style="background-color: #5f59f7;">
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+              <div class="card mb-5" style="border-radius: 15px;">
+                <div class="card-body p-4">
+                  <h3 class="mb-3"><%= interviews.company %></h3>
+                  <p class="small mb-0"><i class="far fa-star fa-lg"></i> <span class="mx-2">|</span> Interview by
+                    <strong><%= interviews.company %> </strong>on <%= interviews.date %></p>
+                  <hr class="my-4">
+                </div>
+
+                <div class="card-body p-4">
+                  <h2>Assigned Student</h2>
+                  <ul>
+                    <% interviews.assignedStudent.forEach(function(student) { %>
+                      <li><%= student.name %></li>
+                    <% }) %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</body>
